@@ -1,0 +1,1 @@
+loop sample(Poisson(10.0)) sum sample(Bernoulli(0.6170807))

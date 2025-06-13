@@ -1,0 +1,7 @@
+let x0 = sample(Bernoulli(0.5)) in 
+let c1 = x0 in
+let x1 = sample(Bernoulli(0.5)) in
+let c2 = c1 + x1 in
+let x2 = sample(Bernoulli(0.5)) in
+let c3 = c2 + x2 in
+if c3 then 1 else 0

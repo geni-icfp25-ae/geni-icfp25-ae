@@ -1,0 +1,8 @@
+let Pollution =
+  let d_0 = sample(Bernoulli(0.100000)) in
+  let d_1 =
+    if !d_0 && true then sample(Bernoulli(0.444444)) else sample(Bernoulli(0.000000))
+  in
+  (d_0, d_1)
+in
+(fst Pollution)

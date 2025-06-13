@@ -1,0 +1,30 @@
+loop sample(Poisson(10.0)) sum (
+    let X_1_1 = true in
+    let X_1_2 = ( X_1_1 && sample(Bernoulli(0.5)) ) in
+    let X_1_3 = ( X_1_2 && sample(Bernoulli(0.5)) ) in
+
+    let X_2_1 = ( X_1_1 && sample(Bernoulli(0.5)) ) in
+    let X_2_2 = (
+        X_2_1 && sample(Bernoulli(0.5)) || 
+        X_1_2 && sample(Bernoulli(0.5)) || 
+        X_1_1 && sample(Bernoulli(0.5))
+    ) in
+    let X_2_3 = (
+        X_2_2 && sample(Bernoulli(0.5)) || 
+        X_1_3 && sample(Bernoulli(0.5)) || 
+        X_1_2 && sample(Bernoulli(0.5))
+    ) in
+
+    let X_3_1 = ( X_2_1 && sample(Bernoulli(0.5))) in
+    let X_3_2 = (
+        X_3_1 && sample(Bernoulli(0.5)) || 
+        X_2_2 && sample(Bernoulli(0.5)) || 
+        X_2_1 && sample(Bernoulli(0.5))
+    ) in
+    let X_3_3 = (
+        X_3_2 && sample(Bernoulli(0.5)) || 
+        X_2_3 && sample(Bernoulli(0.5)) || 
+        X_2_2 && sample(Bernoulli(0.5))
+    ) in
+    X_3_3
+)

@@ -1,0 +1,2 @@
+let x = sample(Poisson(1.0)) in
+if x then 1 else 0

@@ -74,7 +74,7 @@ This Nix environment is **not** for Apple ARM processors.
 
 -   Build the Docker image from `Dockerfile` in the root directory of this repository by running:
     ```shell
-    > docker build -t geni-icfp25-ae . # takes ~40 minutes if there's no cache
+    > docker build -t geni-icfp25-ae .
     [+] Building (8/8) FINISHED
     => [internal] load build definition from Dockerfile
     => => transferring dockerfile: 483B
@@ -83,14 +83,15 @@ This Nix environment is **not** for Apple ARM processors.
     => => transferring context: 2B
     => [1/4] FROM docker.io/nixos/nix:latest@sha256:016f07dddeb5feabeb75c360edb840ff4df3b89c7e0ca7ff1faea6240ce8375a
     => CACHED [2/4] RUN git clone 
-    => CACHED [3/4] WORKDIR /gennifer
+    => CACHED [3/4] WORKDIR /geni-icfp25-ae
     => CACHED [4/4] RUN nix --extra-experimental-features  nix-command --extra-experimental-features flakes develop
     => exporting to image
     => => exporting layers
     => => writing image sha256:9a941936b214b85f855ff7915a80c5d620332cb59609a46feea4f27a35a61fc2
     => => naming to docker.io/library/geni-icfp25-ae
     ```
-
+    Building the Docker image takes approximately 30 minutes without cache, of which about 25 minutes are spent on the `RUN nix` command to build the Nix environment.
+    
 -   (optinal) Saving a clean docker image as `geni-icfp25-ae.tar` before running all the experiments.
 
     ```shell
@@ -108,7 +109,7 @@ This Nix environment is **not** for Apple ARM processors.
     ```
     or simply
     ```shell
-    [$] <> docker run -it geni-icfp25-ae bash -c "cd /geni-icfp25-ae/bench/ICFP && nix --extra-experimental-features nix-command --extra-experimental-features flakes develop"
+    > docker run -it geni-icfp25-ae bash -c "cd /geni-icfp25-ae/bench/ICFP && nix --extra-experimental-features nix-command --extra-experimental-features flakes develop"
     ```
 
 -   Please refer to `geni-icfp25-ae/bench/ICFP/README.md` to run all the experiments in the `nix-shell`

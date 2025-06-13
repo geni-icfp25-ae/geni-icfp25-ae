@@ -1,0 +1,9 @@
+let Age_0 =
+  let d0_1 = sample(Bernoulli(0.200000)) in
+  let d1_2 = sample(Bernoulli(0.600000)) in
+  let d2_3 = sample(Bernoulli(0.200000)) in
+  let __4 = (observe  d0_1 || d1_2 || d2_3) in
+  let __5 = (observe  !(d1_2 && d2_3) && !(d0_1 && d2_3) && !(d0_1 && d1_2)) in
+  (d0_1, (d1_2, d2_3))
+in
+Age_0
