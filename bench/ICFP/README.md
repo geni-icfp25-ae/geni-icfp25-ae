@@ -121,7 +121,7 @@ Change **working directory** to the `bench/icfp` folder before running the comma
 
 -   Evaluate `dice` on the bayesian-networks benchmark:
     ```shell
-    SANITI_CHECK=1 make -C bayesian-networks dice-summary.csv # ~30 mins
+    SANITI_CHECK=1 make -C bayesian-networks dice-summary.csv # ~5 mins
     ```
     This reproduces Table 1 (column Dice) saved in `bayesian-networks/dice-summary.csv`.
 
