@@ -1,0 +1,2 @@
+let x = loop sample(Poisson(1.0)) sum sample(Bernoulli(0.5)) in
+if x then 1 else 0

@@ -1,0 +1,8 @@
+let r = sample(Geometric(0.1)) in
+let b = sample(Bernoulli(0.5)) in
+let _ = if !b then 
+    0
+else
+    observe !sample(Poisson(0.1 * r))
+in
+if r then 1 else 0

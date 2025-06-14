@@ -74,22 +74,35 @@ This Nix environment is **not** for Apple ARM processors.
 
 -   Build the Docker image from `Dockerfile` in the root directory of this repository by running:
     ```shell
-    > docker build -t geni-icfp25-ae . # takes ~40 minutes if there's no cache
-    [+] Building (8/8) FINISHED
-    => [internal] load build definition from Dockerfile
-    => => transferring dockerfile: 483B
-    => [internal] load metadata for docker.io/nixos/nix:latest
-    => [internal] load .dockerignore
-    => => transferring context: 2B
-    => [1/4] FROM docker.io/nixos/nix:latest@sha256:016f07dddeb5feabeb75c360edb840ff4df3b89c7e0ca7ff1faea6240ce8375a
-    => CACHED [2/4] RUN git clone 
-    => CACHED [3/4] WORKDIR /gennifer
-    => CACHED [4/4] RUN nix --extra-experimental-features  nix-command --extra-experimental-features flakes develop
-    => exporting to image
-    => => exporting layers
-    => => writing image sha256:9a941936b214b85f855ff7915a80c5d620332cb59609a46feea4f27a35a61fc2
-    => => naming to docker.io/library/geni-icfp25-ae
+    > docker build -t geni-icfp25-ae .
+    [+] Building 1063.0s (19/19) FINISHED
+    => [internal] load build definition from Dockerfile                                                                 0.2s
+    => => transferring dockerfile: 681B                                                                                 0.0s
+    => [internal] load metadata for docker.io/nixos/nix:latest                                                          1.7s
+    => [internal] load .dockerignore                                                                                    0.2s
+    => => transferring context: 2B                                                                                      0.0s
+    => [ 1/14] FROM docker.io/nixos/nix:latest@sha256:016f07dddeb5feabeb75c360edb840ff4df3b89c7e0ca7ff1faea6240ce8375a 79.6s
+    => [internal] load build context                                                                                    0.6s
+    => => transferring context: 16.86MB                                                                                 0.3s
+    => [ 2/14] RUN mkdir -p /etc/nix && echo "experimental-features = nix-command flakes" > /etc/nix/nix.conf           3.1s
+    => [ 3/14] COPY . /geni-icfp25-ae                                                                                   0.7s
+    => [ 4/14] WORKDIR /geni-icfp25-ae                                                                                  0.4s
+    => [ 5/14] RUN nix build .#pyro-ppl                                                                                39.6s
+    => [ 6/14] RUN nix build .#ocaml                                                                                    8.7s
+    => [ 7/14] RUN nix build .#rustc                                                                                   23.2s
+    => [ 8/14] RUN nix build .#cargo                                                                                    3.6s
+    => [ 9/14] RUN nix build .#c-memo                                                                                   9.2s
+    => [10/14] RUN nix build .#bngen                                                                                  247.1s
+    => [11/14] RUN nix build .#dice                                                                                   141.2s
+    => [12/14] RUN nix build .#problog                                                                                  9.2s
+    => [13/14] RUN nix build .#genfer                                                                                 311.4s
+    => [14/14] RUN nix build .#gennifer                                                                               151.2s
+    => exporting to image                                                                                              31.7s
+    => => exporting layers                                                                                             31.5s
+    => => writing image sha256:20b55f86516ba2f119d4a68eff020731c2ca62427b1faabf6ec11b4054525fec                         0.0s
+    => => naming to docker.io/library/geni-icfp25-ae                                                                    0.0s
     ```
+    Building the Docker image takes approximately 20 minutes without cache, of which about 15 minutes are spent on `RUN nix build .#ddependencies` commands to build the Nix environment.
 
 -   (optinal) Saving a clean docker image as `geni-icfp25-ae.tar` before running all the experiments.
 
@@ -108,7 +121,7 @@ This Nix environment is **not** for Apple ARM processors.
     ```
     or simply
     ```shell
-    [$] <> docker run -it geni-icfp25-ae bash -c "cd /geni-icfp25-ae/bench/ICFP && nix --extra-experimental-features nix-command --extra-experimental-features flakes develop"
+    > docker run -it geni-icfp25-ae bash -c "cd /geni-icfp25-ae/bench/ICFP && nix --extra-experimental-features nix-command --extra-experimental-features flakes develop"
     ```
 
 -   Please refer to `geni-icfp25-ae/bench/ICFP/README.md` to run all the experiments in the `nix-shell`
