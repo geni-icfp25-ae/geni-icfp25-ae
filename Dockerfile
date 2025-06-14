@@ -1,14 +1,25 @@
 FROM nixos/nix
 
-ARG REPO=geni-icfp25-ae
-ARG URL=https://github.com/geni-icfp25-ae/${REPO}.git
+RUN mkdir -p /etc/nix && echo "experimental-features = nix-command flakes" > /etc/nix/nix.conf
 
-RUN git clone ${URL}
-WORKDIR /${REPO}
-RUN nix --extra-experimental-features  nix-command --extra-experimental-features flakes develop 
+# Copy the current directory into the image
+COPY . /geni-icfp25-ae
+WORKDIR /geni-icfp25-ae
 
-# ENV LC_ALL en_US.UTF-8
-# ENV LANG en_US.UTF-8
-# ENV LANGUAGE en_US:en
+RUN nix build .#pyro-ppl
+RUN nix build .#ocaml
+RUN nix build .#rustc
+RUN nix build .#cargo
+RUN nix build .#c-memo
+RUN nix build .#bngen
+RUN nix build .#dice
+RUN nix build .#problog
+RUN nix build .#genfer
+RUN nix build .#gennifer
 
-CMD ["nix", "--extra-experimental-features",  "nix-command", "--extra-experimental-features", "flakes", "develop"]
+# ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+
+CMD ["nix", "develop"]
+# CMD ["nix", "--extra-experimental-features",  "nix-command", "--extra-experimental-features", "flakes", "develop"]
