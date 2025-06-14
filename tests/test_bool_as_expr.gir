@@ -1,0 +1,14 @@
+let sun = true in 
+let state1 = false in 
+let state2 = false in
+let state3 = false in
+let state4 = false in
+let state5 = false in
+let state6 = false in
+let state7 = false in
+let state8 = false in
+let state9 = false in
+let allStrike1 = ((((((((state1 && state2) && state3) && state4) && state5) && state6) && state7) && state8) && state9) in
+let allStrike2 = ((((((((state1 && state2) && state3) && state4) && state5) && state6) && state7) && state8) && state9) in
+let allStrike3 = ((((((((state1 && state2) && state3) && state4) && state5) && state6) && state7) && state8) && state9) in
+allStrike3

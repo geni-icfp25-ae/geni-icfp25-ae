@@ -1,0 +1,9 @@
+let Pollution_0 = sample(Biased(0.5)) in
+let Pollution_1 = sample(Biased(0.4)) in 
+let Pollution_2 = sample(Biased(0.1)) in
+let _ = observe(Pollution_0 || Pollution_1 || Pollution_2) in 
+let _2 = observe(!(Pollution_0 && Pollution_1)) in
+let _3 = observe(!(Pollution_0 && Pollution_2)) in
+let _4 = observe(!(Pollution_1 && Pollution_2)) in
+
+(Pollution_0, Pollution_1)

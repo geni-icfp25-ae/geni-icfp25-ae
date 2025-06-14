@@ -1,0 +1,5 @@
+let a = 1 in 
+let b = 2 in 
+let c = b in 
+let d = 3 in 
+if d then 1 else 0
