@@ -117,11 +117,11 @@ This Nix environment is **not** for Apple ARM processors.
     > docker ps
     CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS     NAMES
     45f79ecec6b4   geni-icfp25-ae    "nix --extra-experim…"   ....            ....           ....      ....
-    > docker exec -it 45f7 bash -c "cd /geni-icfp25-ae/bench/ICFP && nix --extra-experimental-features nix-command --extra-experimental-features flakes develop"
+    > docker exec -it 45f7 bash -c "cd /geni-icfp25-ae/bench/ICFP && nix develop"
     ```
     or simply
     ```shell
-    > docker run -it geni-icfp25-ae bash -c "cd /geni-icfp25-ae/bench/ICFP && nix --extra-experimental-features nix-command --extra-experimental-features flakes develop"
+    > docker run -it geni-icfp25-ae bash -c "cd /geni-icfp25-ae/bench/ICFP && nix develop"
     ```
 
 -   Please refer to `geni-icfp25-ae/bench/ICFP/README.md` to run all the experiments in the `nix-shell`
