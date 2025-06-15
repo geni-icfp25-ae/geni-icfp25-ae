@@ -48,7 +48,8 @@
           ] ++ [
             plot
           ];
-          LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+          # LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+          #  nix eval --raw --impure --expr 'with import <nixpkgs> {}; stdenv.cc.cc.lib'
           shellHook = ''exec fish'';
         };
         packages = {

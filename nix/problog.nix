@@ -1,4 +1,4 @@
-{ python3Packages }:
+{ python3Packages, autoPatchelfHook}:
 
 python3Packages.buildPythonPackage rec {
 
@@ -10,6 +10,10 @@ python3Packages.buildPythonPackage rec {
     rev = version;
   };
   
+  nativeBuildInputs = [
+    autoPatchelfHook 
+  ];
+
   propagatedBuildInputs = with python3Packages; [
     setuptools
   ];
