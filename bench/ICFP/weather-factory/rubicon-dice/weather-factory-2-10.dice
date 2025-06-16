@@ -1,0 +1,129 @@
+
+fun hit(packedstate : ( bool, (bool, bool))) {
+	let sun = fst packedstate in 
+	let state1 = fst (snd packedstate) in 
+	 let state2 = snd (snd packedstate) in 
+
+	let allStrike = (state1 && state2) in
+allStrike
+}
+fun step(packedstate : ( bool, (bool, bool))) {
+	let sun = fst packedstate in 
+	let state1 = fst (snd packedstate) in 
+	 let state2 = snd (snd packedstate) in 
+
+	let allStrike = (state1 && state2) in
+		let _cmd_act_1 = (((sun || !(sun)) && ((((state1 && sun) || (!(state1) && sun)) || (state1 && !(sun))) || (!(state1) && !(sun)))) && ((((state2 && sun) || (!(state2) && sun)) || (state2 && !(sun))) || (!(state2) && !(sun)))) in
+		let _count = 
+			(if _cmd_act_1 then int(1, 1) else int(1, 0)) in 
+		if _count == int(1,0) then
+			( sun, (state1, state2))
+		else
+			let _sel_act =
+				if _count == int(1, 1) then int(1, 1) else 
+					discrete(0.0, 1.0)
+					in
+			let _offset0 = _sel_act in 
+			let _take1 = ((_offset0 == int(1, 1)) && _cmd_act_1) in 
+			 if _take1 then
+				let _result_0 =
+					 if sun then 
+						let _sel_update_0 = discrete(0.700000000, 0.300000000) in 
+							if _sel_update_0 == int(1, 0) then
+								(sun)
+							else
+								(!(sun))
+					else if !(sun) then 
+						let _sel_update_0 = discrete(0.400000000, 0.600000000) in 
+							if _sel_update_0 == int(1, 0) then
+								(sun)
+							else
+								(!(sun))
+					else
+						sun
+				in
+				let sun_prime = _result_0 in 
+				let _result_1 =
+					 if (state1 && sun) then 
+						let _sel_update_1 = discrete(0.030000000, 0.970000000) in 
+							if _sel_update_1 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else if (!(state1) && sun) then 
+						let _sel_update_1 = discrete(0.140000000, 0.860000000) in 
+							if _sel_update_1 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else if (state1 && !(sun)) then 
+						let _sel_update_1 = discrete(0.060000000, 0.940000000) in 
+							if _sel_update_1 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else if (!(state1) && !(sun)) then 
+						let _sel_update_1 = discrete(0.080000000, 0.920000000) in 
+							if _sel_update_1 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else
+						state1
+				in
+				let state1_prime = _result_1 in 
+				let _result_2 =
+					 if (state2 && sun) then 
+						let _sel_update_2 = discrete(0.060000000, 0.940000000) in 
+							if _sel_update_2 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else if (!(state2) && sun) then 
+						let _sel_update_2 = discrete(0.210000000, 0.790000000) in 
+							if _sel_update_2 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else if (state2 && !(sun)) then 
+						let _sel_update_2 = discrete(0.120000000, 0.880000000) in 
+							if _sel_update_2 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else if (!(state2) && !(sun)) then 
+						let _sel_update_2 = discrete(0.120000000, 0.880000000) in 
+							if _sel_update_2 == int(1, 0) then
+								( true )
+							else
+								( false )
+					else
+						state2
+				in
+				let state2_prime = _result_2 in 
+				( sun_prime, (state1_prime, state2_prime))
+			else ( sun, (state1, state2))
+}
+let _goal = false in 
+let res = ( true, (false, false)) in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+let _goal = if !_goal then hit(res) else _goal in
+let res = if !_goal then step(res) else res in
+(hit(res), false)

@@ -1,0 +1,2 @@
+let X = sample(Categorical(0.1, 0.4, 0.5)) in
+X + 1

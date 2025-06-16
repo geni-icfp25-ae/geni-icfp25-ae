@@ -1,0 +1,3 @@
+let x = sample(Bernoulli(0.1)) in
+let _ = observe x in 
+0

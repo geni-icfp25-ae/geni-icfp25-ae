@@ -1,0 +1,3 @@
+let x = sample(Bernoulli(0.1)) in 
+let y = sample(Bernoulli(0.2)) in
+(x, y)

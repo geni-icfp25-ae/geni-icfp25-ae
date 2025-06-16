@@ -1,0 +1,5 @@
+let Age = 
+    let d0 = flip(0.200000) in let d1 = flip(0.7500000) in 
+    (d0, if d0 then (false, false) else (d1,if d1 then false else true)) 
+in
+Age

@@ -1,0 +1,13 @@
+let x = 
+    let d_0 = sample(Bernoulli(0.500000)) in
+    let d_1 = sample(Bernoulli(0.500000))
+    in
+    (d_0, d_1)
+in
+let y =  let d_0 = sample(Bernoulli(0.500000)) in
+             d_0 in
+let z = if !(fst x) && !(snd x)  then 
+1
+else 
+    0
+in z

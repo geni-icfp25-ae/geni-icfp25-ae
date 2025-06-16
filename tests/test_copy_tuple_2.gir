@@ -1,0 +1,30 @@
+let _goal_1 = 
+    let sun = true in 
+    let state1 = true in 
+    let state2 = false in
+    let state3 = false in
+    let state4 = false in
+    let state5 = false in
+    let state6 = false in
+    let state7 = false in
+    let state8 = false in
+    let state9 = false in
+    let _goal_0 = 
+        let allStrike = ((((((((state1 && state2) && state3) && state4) && state5) && state6) && state7) && state8) && state9) in
+        allStrike
+    in  
+    if _goal_0 then 1 else 
+        let sun_prime = if sun then sample(Bernoulli(0.7)) else sample(Bernoulli(0.6)) in
+        let state1_prime = if sun then if state1 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state2_prime = if sun then if state2 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in        
+        let state3_prime = if sun then if state3 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state4_prime = if sun then if state4 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state5_prime = if sun then if state5 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state6_prime = if sun then if state6 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state7_prime = if sun then if state7 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state8_prime = if sun then if state8 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let state9_prime = if sun then if state9 then sample(Bernoulli(0.03)) else sample(Bernoulli(0.14)) else  if state1 then sample(Bernoulli(0.06)) else sample(Bernoulli(0.08)) in
+        let allStrike = ((((((((state1_prime && state2_prime) && state3_prime) && state4_prime) && state5_prime) && state6_prime) && state7_prime) && state8_prime) && state9_prime) in
+        allStrike
+in
+_goal_1

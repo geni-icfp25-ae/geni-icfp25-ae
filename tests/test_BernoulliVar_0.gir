@@ -1,0 +1,2 @@
+let b = sample(Bernoulli(0.5)) in
+sample(Bernoulli(b))

@@ -1,0 +1,136 @@
+
+let _goal_0 = false in
+let res_1 = (true, (false, false)) in
+let _goal_2 =
+  if !_goal_0 then
+    let packedstate_46 = res_1 in
+    let sun_47 = (fst packedstate_46) in
+    let state1_48 = (fst (snd packedstate_46)) in
+    let state2_49 = (snd (snd packedstate_46)) in
+    let allStrike_50 = (state1_48 && state2_49) in
+    allStrike_50
+  else
+    _goal_0
+in
+let res_3 =
+  if !_goal_2 then
+    let packedstate_9 = res_1 in
+    let sun_10 = (fst packedstate_9) in
+    let state1_11 = (fst (snd packedstate_9)) in
+    let state2_12 = (snd (snd packedstate_9)) in
+    let allStrike_13 = (state1_11 && state2_12) in
+    let _cmd_act_1_14 =
+      (sun_10 || !sun_10 &&
+         state1_11 && sun_10 || !state1_11 && sun_10 || state1_11 && !sun_10
+           || !state1_11 && !sun_10 &&
+        state2_12 && sun_10 || !state2_12 && sun_10 || state2_12 && !sun_10
+          || !state2_12 && !sun_10)
+    in
+    let _count_15 = if _cmd_act_1_14 then true else false in
+    if _count_15 then
+      let _sel_act_16 =
+        if _count_15 then
+          true
+        else
+          let d_0_45 = sample(Bernoulli(1.000000)) in
+          d_0_45
+      in
+      let _offset0_17 = _sel_act_16 in
+      let _take1_18 = (_offset0_17 && _cmd_act_1_14) in
+      if _take1_18 then
+        let _result_0_19 =
+          if sun_10 then
+            let _sel_update_0_43 =
+              let d_0_44 = sample(Bernoulli(0.300000)) in
+              d_0_44
+            in
+            if _sel_update_0_43 then (!sun_10) else sun_10
+          else
+            if !sun_10 then
+              let _sel_update_0_41 =
+                let d_0_42 = sample(Bernoulli(0.600000)) in
+                d_0_42
+              in
+              if _sel_update_0_41 then (!sun_10) else sun_10
+            else
+              sun_10
+        in
+        let sun_prime_20 = _result_0_19 in
+        let _result_1_21 =
+          if state1_11 && sun_10 then
+            let _sel_update_1_39 =
+              let d_0_40 = sample(Bernoulli(0.970000)) in
+              d_0_40
+            in
+            if _sel_update_1_39 then false else true
+          else
+            if !state1_11 && sun_10 then
+              let _sel_update_1_37 =
+                let d_0_38 = sample(Bernoulli(0.860000)) in
+                d_0_38
+              in
+              if _sel_update_1_37 then false else true
+            else
+              if state1_11 && !sun_10 then
+                let _sel_update_1_35 =
+                  let d_0_36 = sample(Bernoulli(0.940000)) in
+                  d_0_36
+                in
+                if _sel_update_1_35 then false else true
+              else
+                if !state1_11 && !sun_10 then
+                  let _sel_update_1_33 =
+                    let d_0_34 = sample(Bernoulli(0.920000)) in
+                    d_0_34
+                  in
+                  if _sel_update_1_33 then false else true
+                else
+                  state1_11
+        in
+        let state1_prime_22 = _result_1_21 in
+        let _result_2_23 =
+          if state2_12 && sun_10 then
+            let _sel_update_2_31 =
+              let d_0_32 = sample(Bernoulli(0.940000)) in
+              d_0_32
+            in
+            if _sel_update_2_31 then false else true
+          else
+            if !state2_12 && sun_10 then
+              let _sel_update_2_29 =
+                let d_0_30 = sample(Bernoulli(0.790000)) in
+                d_0_30
+              in
+              if _sel_update_2_29 then false else true
+            else
+              if state2_12 && !sun_10 then
+                let _sel_update_2_27 =
+                  let d_0_28 = sample(Bernoulli(0.880000)) in
+                  d_0_28
+                in
+                if _sel_update_2_27 then false else true
+              else
+                if !state2_12 && !sun_10 then
+                  let _sel_update_2_25 =
+                    let d_0_26 = sample(Bernoulli(0.880000)) in
+                    d_0_26
+                  in
+                  if _sel_update_2_25 then false else true
+                else
+                  state2_12
+        in
+        let state2_prime_24 = _result_2_23 in
+        (sun_prime_20, (state1_prime_22, state2_prime_24))
+      else
+        (sun_10, (state1_11, state2_12))
+    else
+      (sun_10, (state1_11, state2_12))
+  else
+    res_1
+in
+(let packedstate_4 = res_3 in
+ let sun_5 = (fst packedstate_4) in
+ let state1_6 = (fst (snd packedstate_4)) in
+ let state2_7 = (snd (snd packedstate_4)) in
+ let allStrike_8 = (state1_6 && state2_7) in
+ allStrike_8, false)

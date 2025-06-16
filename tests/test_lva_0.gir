@@ -1,0 +1,4 @@
+let x = sample(Bernoulli(0)) in
+let y = 0 in 
+let z = x + y in
+0

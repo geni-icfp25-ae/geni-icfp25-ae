@@ -1,0 +1,50 @@
+let res_0 =
+  (true,
+    (false,
+      (false, (false, (false, (false, (false, (false, (false, false)))))))))
+in
+let res_1 = 
+    let packedstate = res_0 in
+    let sun    = (fst packedstate) in 
+    let state1 = (fst (snd packedstate)) in 
+    let state2 = (fst (snd (snd packedstate))) in 
+    let state3 = (fst (snd (snd (snd packedstate)))) in 
+    let state4 = (fst (snd (snd (snd (snd packedstate))))) in 
+    let state5 = (fst (snd (snd (snd (snd (snd packedstate)))))) in 
+    let state6 = (fst (snd (snd (snd (snd (snd (snd packedstate))))))) in 
+    let state7 = (fst (snd (snd (snd (snd (snd (snd (snd packedstate)))))))) in 
+    let state8 = (fst (snd (snd (snd (snd (snd (snd (snd (snd packedstate))))))))) in 
+    let state9 = (snd (snd (snd (snd (snd (snd (snd (snd (snd packedstate))))))))) in 
+    let new_state = ( sun, ( state1, ( state2, ( state3, ( state4, ( state5, ( state6, ( state7, (state8, state9))))))))) in
+    new_state
+in 
+let res_2 = 
+    let packedstate = res_1 in
+    let sun    = (fst packedstate) in 
+    let state1 = (fst (snd packedstate)) in 
+    let state2 = (fst (snd (snd packedstate))) in 
+    let state3 = (fst (snd (snd (snd packedstate)))) in 
+    let state4 = (fst (snd (snd (snd (snd packedstate))))) in 
+    let state5 = (fst (snd (snd (snd (snd (snd packedstate)))))) in 
+    let state6 = (fst (snd (snd (snd (snd (snd (snd packedstate))))))) in 
+    let state7 = (fst (snd (snd (snd (snd (snd (snd (snd packedstate)))))))) in 
+    let state8 = (fst (snd (snd (snd (snd (snd (snd (snd (snd packedstate))))))))) in 
+    let state9 = (snd (snd (snd (snd (snd (snd (snd (snd (snd packedstate))))))))) in 
+    let new_state = ( sun, ( state1, ( state2, ( state3, ( state4, ( state5, ( state6, ( state7, (state8, state9))))))))) in
+    new_state
+in 
+let _goal = 
+    let packedstate = res_2 in
+    let sun    = (fst packedstate) in 
+    let state1 = (fst (snd packedstate)) in 
+    let state2 = (fst (snd (snd packedstate))) in 
+    let state3 = (fst (snd (snd (snd packedstate)))) in 
+    let state4 = (fst (snd (snd (snd (snd packedstate))))) in 
+    let state5 = (fst (snd (snd (snd (snd (snd packedstate)))))) in 
+    let state6 = (fst (snd (snd (snd (snd (snd (snd packedstate))))))) in 
+    let state7 = (fst (snd (snd (snd (snd (snd (snd (snd packedstate)))))))) in 
+    let state8 = (fst (snd (snd (snd (snd (snd (snd (snd (snd packedstate))))))))) in 
+    let state9 = (snd (snd (snd (snd (snd (snd (snd (snd (snd packedstate))))))))) in 
+    ((((((((state1 && state2) && state3) && state4) && state5) && state6) && state7) && state8) && state9) 
+in 
+_goal

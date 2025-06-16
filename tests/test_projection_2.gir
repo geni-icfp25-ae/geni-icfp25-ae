@@ -1,0 +1,4 @@
+let x = (1, 1) in
+let y = (fst x) in
+let z = (snd x) in
+(x, y)

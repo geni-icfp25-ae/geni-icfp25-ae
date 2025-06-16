@@ -1,0 +1,4 @@
+let X = sample(Categorical(0.1, 0.4, 0.5)) in
+let Y = sample(Categorical(1.0, 0.0, 0.0)) in
+let Z = X + Y + 0 in
+if Z = 1 then 1 else 0

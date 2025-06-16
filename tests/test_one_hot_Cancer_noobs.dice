@@ -1,0 +1,41 @@
+// probability ( Pollution ) {
+//   table 0.5, 0.4, 0.1;
+// }
+let Pollution =
+  let i0 = flip 0.5 in
+  let i1 = flip 0.8 in 
+  (i0, if i0 then (false,false) else (i1, !i1))
+in 
+let Pollution =
+  let i0 =  flip 0.5 in
+  let i1 = if i0 then false else flip 0.8 in 
+  let i2 = if i0 then false else if i1 then false else true in
+  (i0, (i1, i2))
+in 
+// probability ( Smoker ) {
+//   table 0.3, 0.7;
+// }
+let Smoker = 
+  let i0 = flip 0.3 in 
+  (i0, !i0)
+in
+// probability ( Cancer | Pollution, Smoker ) {
+//   (low, True) 0.03, 0.97;
+//   (medium, True) 0.03, 0.97;
+//   (high, True) 0.05, 0.95;
+//   (low, False) 0.001, 0.999;
+//   (medium, False) 0.001, 0.999;
+//   (high, False) 0.02, 0.98;
+//}
+let Cancer = 
+  let i0 = 
+    ((fst Smoker) && (    fst Pollution) && flip 0.03 ) ||
+    ((fst Smoker) && (fst snd Pollution) && flip 0.03 ) ||
+    ((fst Smoker) && (snd snd Pollution) && flip 0.05 ) ||
+    ((snd Smoker) && (    fst Pollution) && flip 0.001) ||
+    ((snd Smoker) && (fst snd Pollution) && flip 0.001) ||
+    ((snd Smoker) && (snd snd Pollution) && flip 0.02 ) 
+  in
+  (i0, !i0)
+in
+Pollution

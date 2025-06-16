@@ -1,0 +1,3 @@
+let X = sample(Categorical(0.1, 0.4, 0.5)) in
+let Y = sample(Categorical(1.0, 0.0, 0.0)) in
+X + Y + 0
