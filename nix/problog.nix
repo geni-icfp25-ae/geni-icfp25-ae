@@ -10,9 +10,8 @@ python3Packages.buildPythonPackage rec {
     rev = version;
   };
   
-  nativeBuildInputs = [
-    autoPatchelfHook 
-  ];
+  # Only use autoPatchelf on Linux
+  nativeBuildInputs = lib.optionals stdenv.isLinux [ autoPatchelfHook ];
 
   propagatedBuildInputs = with python3Packages; [
     setuptools
