@@ -22,4 +22,3 @@ jobs:
       - name: Enter nix develop environment
         run: |
           nix develop --command bash -c "echo 'Nix develop succeeded'; env"
-ƒ
