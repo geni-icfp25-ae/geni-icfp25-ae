@@ -1,4 +1,4 @@
-{ python3Packages, autoPatchelfHook}:
+{lib, stdenv, python3Packages, autoPatchelfHook}:
 
 python3Packages.buildPythonPackage rec {
 
