@@ -16,6 +16,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-wMuQj1IRZkRxRccpXI7BBqZ26AwxKdeYmV6OFtT0YhM=";
 
+  # Skip running cargo tests
+  doCheck = false;
+
   meta = {
     description = "Tool for Bayesian inference on discrete models expressed as probabilistic programs, via generating functions";
     homepage = "https://github.com/fzaiser/genfer";

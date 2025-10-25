@@ -1,0 +1,24 @@
+name: Nix Develop Bench
+
+on:
+  push:
+    branches:
+      - main
+      - nix
+
+jobs:
+  nix-develop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Enter nix develop environment
+        run: |
+          nix develop --command bash -c "echo 'Nix develop succeeded'; env"
