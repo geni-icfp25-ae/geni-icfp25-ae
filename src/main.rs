@@ -27,15 +27,15 @@ struct Args {
     /// Input file containing the source code
     file_name: PathBuf,
 
-    /// Print the parsed program
+    /// Print the parsed program (--pp)
     #[arg(long, alias = "pp")]
     print_program: bool,
 
-    /// Print the compiled generating function
+    /// Print the compiled generating function (--pg)
     #[arg(long, alias = "pg")]
     print_gf: bool,
 
-    /// Print the time consumption.
+    /// Print the time consumption (--pt)
     #[arg(long, alias = "pt")]
     print_time: bool,
 
@@ -63,6 +63,15 @@ struct Args {
     /// Apply free variable analysis before compiling to generating functions
     #[arg(long, short)]
     live: bool,
+    
+    /// Turn the free variable analysis off
+    /// --live --live_off: error
+    /// --live_off only: live variable analysis off
+    /// --live only: live variable analysis on
+    /// neither: live variable analysis on
+    #[arg(long, help="Turn the free variable analysis off\n--live --live_off \t: \terror\n--live_off only     \t: \tlive variable analysis off\n--live only     \t: \tlive variable analysis on\nneither         \t: \tlive variable analysis on")]
+    live_off: bool,
+    
     /// Compile the generating function to a C program
     #[arg(long)]
     c: bool,
@@ -88,7 +97,12 @@ struct Args {
 }
 
 fn run() -> io::Result<()> {
-    let args = Args::parse();
+    let mut args = Args::parse();
+    if args.live_off && args.live {
+        panic!("Cannot set both --live and --live-off");
+    } else if !args.live_off && !args.live {
+        args.live = true;
+    }
     let contents = std::fs::read_to_string(&args.file_name).unwrap();
 
     let parse_time;
